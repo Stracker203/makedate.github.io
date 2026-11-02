@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#fff0f2"><meta name="description" content="一份认真又可爱的邀请。选择你的安排，分享我们的约定。"><title>邀请你和我约会</title>
+<style>
+*{box-sizing:border-box}body{margin:0;padding:12px;background:linear-gradient(135deg,#ffe7e7,#fff4ed 48%,#ece4fc);color:#302828;font-family:system-ui,"Microsoft YaHei",sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}main{position:relative;margin:auto;width:min(100%,550px);min-height:calc(100svh - 24px);background:#ffffffed;border-radius:30px;padding:40px 22px 32px;overflow:hidden;box-shadow:0 20px 80px #b77c8e12}main:before{content:"";position:absolute;width:100px;height:6px;border-radius:0 0 10px 10px;background:linear-gradient(90deg,#ff8f80,#f26686,#ad85d5);top:0;left:50%;transform:translateX(-50%)}section{text-align:center}section[hidden],[hidden]{display:none!important}.hero{padding-top:clamp(35px,12vh,100px)}.emoji{width:92px;height:92px;display:grid;place-items:center;font-size:54px;background:linear-gradient(135deg,#ffe9c2,#ffdee7);border:6px solid white;border-radius:38%;box-shadow:0 10px 30px #dfb3a826;margin:0 auto 24px;transform:rotate(-4deg)}.badge{display:inline-block;padding:9px 16px;border-radius:40px;background:#fff0f2;color:#cf7285;font-size:13px;font-weight:700;letter-spacing:1px}h1,h2{font-size:clamp(28px,7vw,38px);line-height:1.35;margin:20px 0;font-weight:850;letter-spacing:-1px}p{color:#8a8080;font-size:15px;line-height:1.9;margin:20px 0 28px}.buttons{display:flex;align-items:center;flex-direction:column;gap:12px;margin-top:32px}button{border:1px solid #eadfe0;border-radius:18px;padding:16px 18px;background:#fffdfa;color:#3a3030;font-weight:700;min-height:52px}.primary{background:linear-gradient(120deg,#ff857e,#ef647e);color:white;border:0;box-shadow:0 12px 25px #f2767c30}.secondary{color:#8a7d80;background:white}.wide{width:100%}.quiet{border:0;background:transparent;color:#aa9299;font-weight:400;font-size:12px;min-height:40px;padding:8px;margin-top:14px}.count{font-size:12px;color:#b5a7ab;margin-top:28px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}.grid button{min-height:70px;font-size:16px}.grid button.selected{border:1.5px solid #ce7c79;color:#cc7670;background:#fff0eb;box-shadow:0 4px 14px #e7a5a518}.progress{display:flex;justify-content:center;gap:8px;margin:-10px 0 28px}.progress i{width:36px;height:4px;border-radius:4px;background:#eee7e3}.progress i.on{background:#e97b7b}.panel{background:#fcf6f7;border:1px solid #eadfe2;border-radius:20px;padding:17px;text-align:left;margin:16px 0}.panel label,.label{display:block;color:#99898e;font-size:13px;margin-bottom:10px}input,textarea{border:1px solid #e6d9dd;border-radius:13px;background:white;width:100%;padding:14px;min-width:0;font-size:16px;color:#3a3030}textarea{resize:vertical;line-height:1.7}input:focus,textarea:focus{outline:2px solid #f2a6ad}button:focus-visible{outline:3px solid #a587ce;outline-offset:3px}.error{color:#c65a69;font-size:13px;min-height:22px;margin:12px 0}.summary{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}.summary .panel{margin:0;overflow-wrap:anywhere}.span2{grid-column:1/-1}.value{font-size:16px;font-weight:700;line-height:1.8;white-space:pre-wrap}.lavender{background:#f4f0ff}.note{font-size:12px;line-height:1.8;color:#ab969f}.sharebox{position:fixed;inset:0;background:#34243188;z-index:20;display:flex;align-items:center;justify-content:center;padding:20px}.sheet{background:#fffafd;border-radius:24px;padding:25px;width:min(100%,470px);max-height:90vh;overflow:auto;text-align:center}.sheet h2{font-size:26px}.sheet p{margin:12px 0 20px}.sheet textarea{font-size:12px;min-height:100px}.wechat-arrow{font-size:30px;text-align:right;color:#e57388}.tip{background:#fff8e6;border-radius:14px;padding:15px;font-size:13px;color:#a18a66}footer{text-align:center;font-size:10px;color:#baa2ad;margin-top:30px;letter-spacing:2px}@media(min-width:650px){body{padding:25px}main{min-height:calc(100vh - 50px);padding:45px 35px}}@media(prefers-reduced-motion:no-preference){section{animation:appear .25s ease}@keyframes appear{from{opacity:.3;transform:translateY(8px)}to{opacity:1;transform:none}}}
+#no{position:relative;transition:left .12s ease,top .12s ease}#result-text{font-weight:400;font-size:15px;line-height:2;white-space:pre-wrap}#result-summary{display:none}#result-ending{margin-bottom:15px}@media print{body{background:white}main{box-shadow:none;max-width:100%}#edit,#restart,footer{display:none}}
+</style></head><body><main>
+<section id="invite" class="hero"><div class="emoji" id="face">🙂</div><div class="badge">一份认真又可爱的邀请</div><h1 id="invite-title">我可以约你<br>出来玩吗？</h1><p id="invite-desc">想和你见一面，一起做点开心的事情。</p><div class="buttons"><button id="yes" class="primary">可以呀 💌</button><button id="no" class="secondary">这次不行</button></div><div id="count" class="count"></div><button id="direct-decline" class="quiet">这次确实不能赴约</button></section>
+<section id="confirm" class="hero" hidden><div class="emoji">👀</div><div class="badge">抓到一个想答应的人</div><h2>这就答应啦？</h2><p>那就一起安排一场喜欢的约会吧。<br>吃点好吃的，做点开心的事。</p><div class="tip">有变化随时好好沟通，开心见面最重要 🧋</div><div class="buttons"><button class="primary wide" data-go="activities">不反悔，我可想和你玩啦！</button><button class="secondary wide" data-go="invite">等一下，让我矜持三秒</button></div></section>
+<section id="activities" hidden><div class="progress"><i class="on"></i><i></i><i></i><i></i></div><div class="badge">第一步 · 约会安排</div><h2>想和我一起做什么？</h2><p>可以选择一项，也可以贪心地选择两项。</p><div class="grid" id="activity-options"></div><div class="count" id="activity-count">已选择 0/2 项</div><div class="error" id="activity-error" role="alert"></div><button class="primary wide" id="activity-next">选好了，继续</button><button class="quiet" data-go="confirm">上一步</button></section>
+<section id="details" hidden><div class="emoji" id="detail-icon">🍽️</div><div class="badge" id="detail-badge"></div><h2 id="detail-title"></h2><p>选一个现在看到就会开心的。</p><div class="grid" id="detail-options"></div><div class="panel" id="detail-custom-box" hidden><label for="detail-custom">说说你的想法</label><input id="detail-custom" maxlength="80" placeholder="写下你喜欢的安排"></div><div class="error" id="detail-error" role="alert"></div><button class="primary wide" id="detail-next">选好了，继续</button><button class="quiet" id="detail-back">上一步</button></section>
+<section id="location" hidden><div class="progress"><i class="on"></i><i class="on"></i><i></i><i></i></div><div class="badge">第二步 · 在哪里</div><h2>想在哪里见面？</h2><p>距离刚刚好，期待也刚刚好。</p><div class="grid" id="location-options"></div><div class="panel"><label for="address">具体在哪里？（可选，特定想法时必填）</label><input id="address" maxlength="100" placeholder="例如：某个商场、某家店"></div><div class="error" id="location-error" role="alert"></div><button class="primary wide" id="location-next">确认地点</button><button class="quiet" id="location-back">上一步</button></section>
+<section id="time" hidden><div class="progress"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><div class="badge">最后一步 · 什么时间</div><h2>什么时候一起去？</h2><p>选个不用匆匆忙忙的时间。</p><div class="grid" id="time-options"></div><div class="panel"><div id="custom-time" hidden><label for="day">约会日期（必填）</label><input id="day" type="date" disabled><label for="clock" style="margin-top:15px">见面时间（可选）</label><input id="clock" type="time" disabled></div><label for="message" style="margin-top:15px">想对 TA 说的话（可选）</label><textarea id="message" rows="2" maxlength="200" placeholder="期待和你见面呀 ♡"></textarea></div><div class="error" id="time-error" role="alert"></div><button class="primary wide" id="finish">生成我们的约会计划</button><button class="quiet" data-go="location">上一步</button></section>
+<section id="decline" hidden><div class="emoji">🌙</div><div class="badge">这次先不赴约啦</div><h2>谢谢你认真邀请我</h2><p>没关系，每个回答都值得被好好表达。</p><div class="panel lavender"><label for="decline-message">想对 TA 说的话</label><textarea id="decline-message" rows="5" maxlength="300">这次先不赴约啦 🙇
+谢谢你这么认真地邀请我，也请不要难过。
+等以后时间合适，我们再一起玩吧。</textarea></div><button id="decline-finish" class="primary wide">生成我的回复页面</button><button class="quiet" data-go="invite">我想重新考虑一下</button></section>
+<section id="result" hidden><div class="emoji" id="result-icon">🎉</div><div class="badge" id="result-badge"></div><h2 id="result-title"></h2><p id="result-desc"></p><div id="result-summary" class="summary"></div><p style="color:#d57989;font-weight:700" id="result-ending"></p><div class="panel lavender"><span class="label">完整回复 · 可以截图发送给对方</span><div id="result-text" class="value"></div></div><p class="note">可以截图这一页，或复制完整回复发送给对方 💌</p><button id="copy-result" class="primary wide">复制信息到剪贴板</button><p id="copy-status" class="note" role="status" aria-live="polite"></p><div id="copy-fallback" class="panel" hidden><label for="copy-text">长按下方文字，全选并复制</label><textarea id="copy-text" rows="7" readonly></textarea></div><button id="edit" class="secondary wide">修改我的回复</button><button id="restart" class="quiet">发起一份新的邀请</button></section>
+<footer>A LITTLE INVITATION · WITH LOVE</footer></main>
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const catalog = [
+ {name:'吃饭',icon:'🍽️',title:'想一起吃什么？',options:['火锅 🔥','烧烤 🍖','日料 🍣','西餐 🍝','甜品奶茶 🧋','其他想法 ✍️']},
+ {name:'微醺',icon:'🥂',title:'想喝点什么？',options:['清吧小坐 🍸','精酿啤酒 🍺','无酒精特调 🍹','其他想法 ✍️']},
+ {name:'看电影',icon:'🎬',title:'想看什么电影？',options:['爱情片 💕','喜剧片 😆','悬疑片 🕵️','动画片 🐾','到时一起选 🎟️','其他想法 ✍️']},
+ {name:'唱 K',icon:'🎤',title:'想怎么一起唱？',options:['经典老歌 🎵','流行情歌 💌','快乐合唱 🎤','到时一起选 ✨','其他想法 ✍️']},
+ {name:'羽毛球',icon:'🏸',title:'想怎么一起打球？',options:['轻松娱乐 🌿','认真切磋 🏸','新手教学 🙌','其他想法 ✍️']},
+ {name:'看演出',icon:'🎫',title:'想看哪种演出？',options:['音乐现场 🎸','话剧 🎭','脱口秀 😆','到时一起选 ✨','其他想法 ✍️']}
+];
+let state = {v:1,status:'accepted',attempts:1,activities:[],details:{},place:'',address:'',when:'',date:'',clock:'',message:''};
+let dodgeX=0,dodgeY=0;
+let refuse=0, detailIndex=0, detailChoice='', currentPage='invite', resultData=null;
+const pages=['invite','confirm','activities','details','location','time','decline','result'];
+function go(id){pages.forEach(p=>$(p).hidden=p!==id);currentPage=id;window.scrollTo(0,0);const h=$(id).querySelector('h1,h2');h.setAttribute('tabindex','-1');h.focus({preventScroll:true});}
+function buttons(container,items,selected,choose){$(container).replaceChildren();items.forEach(text=>{const b=document.createElement('button');b.type='button';b.textContent=text;b.classList.toggle('selected',selected.includes(text));b.setAttribute('aria-pressed',String(selected.includes(text)));b.onclick=()=>choose(text);$(container).appendChild(b);});}
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+const refusal=[['🙂','我可以约你\n出来玩吗？','想和你见一面，一起做点开心的事情。','这次不行'],['😯','刚才是不是手滑了？','没关系，再认真问你一次。','我再想想'],['🥺','真的不可以\n出来玩吗？','我已经偷偷开始期待这次约会了……','真的不行'],['🤨','你刚才是不是点错了？','如果还没决定，也可以再考虑一下。','我没有点错'],['😢','我会认真准备这次约会','再考虑三秒钟？三、二、一……','还是不行'],['😭','最后一次可爱地问你','如果确实不能赴约也没关系，我会尊重你的决定。','很抱歉，我不能赴约']];
+function renderInvite(){resetDodge();const item=refusal[refuse];$('face').textContent=item[0];$('invite-title').textContent=item[1];$('invite-title').style.whiteSpace='pre-line';$('invite-desc').textContent=item[2];$('no').textContent=item[3];$('yes').style.width=`${Math.min(100,48+refuse*9)}%`;$('count').textContent=refuse?`已经认真邀请了 ${refuse+1} 次`:'';}
+$('yes').onclick=()=>{state.attempts=refuse+1;go('confirm');};
+$('no').onclick=()=>{if(refuse<5){refuse++;renderInvite();}else{state.attempts=6;go('decline');}};
+function renderActivities(){buttons('activity-options',catalog.map(x=>`${x.icon} ${x.name}`),state.activities.map(i=>`${catalog[i].icon} ${catalog[i].name}`),text=>{const id=catalog.findIndex(x=>`${x.icon} ${x.name}`===text);if(state.activities.includes(id)){state.activities=state.activities.filter(i=>i!==id);delete state.details[id];}else if(state.activities.length<2){state.activities.push(id);}else{$('activity-error').textContent='最多选择两项哦，先取消一项再选吧。';return;}$('activity-error').textContent='';renderActivities();});$('activity-count').textContent=`已选择 ${state.activities.length}/2 项`;}
+$('activity-next').onclick=()=>{if(!state.activities.length){$('activity-error').textContent='至少选一项喜欢的活动吧。';return;}detailIndex=0;renderDetail();go('details');};
+function renderDetail(){const id=state.activities[detailIndex],item=catalog[id],old=state.details[id]||'';detailChoice=item.options.includes(old)?old:old?'其他想法 ✍️':'';$('detail-custom').value=old&&!item.options.includes(old)?old:'';$('detail-icon').textContent=item.icon;$('detail-title').textContent=item.title;$('detail-badge').textContent=`第 ${detailIndex+1} 项 · 共 ${state.activities.length} 项`;$('detail-error').textContent='';renderDetailOptions(item);}
+function renderDetailOptions(item){buttons('detail-options',item.options,[detailChoice],text=>{detailChoice=text;renderDetailOptions(item);});$('detail-custom-box').hidden=detailChoice!=='其他想法 ✍️';}
+$('detail-next').onclick=()=>{const value=detailChoice==='其他想法 ✍️'?$('detail-custom').value.trim():detailChoice;if(!value){$('detail-error').textContent='请选择一个偏好，或写下你的想法。';return;}state.details[state.activities[detailIndex]]=value;if(++detailIndex<state.activities.length)renderDetail();else go('location');};
+$('detail-back').onclick=()=>{if(detailIndex>0){detailIndex--;renderDetail();}else go('activities');};
+const places=['去你附近','去我附近','找个中间位置','有特定想法 ✍️'];
+function renderPlaces(){buttons('location-options',places,[state.place],text=>{state.place=text;renderPlaces();});}
+$('location-next').onclick=()=>{state.address=$('address').value.trim();if(!state.place||(state.place===places[3]&&!state.address)){$('location-error').textContent='请选择地点，有特定想法时请填写具体地址。';return;}$('location-error').textContent='';go('time');};
+$('location-back').onclick=()=>{detailIndex=state.activities.length-1;renderDetail();go('details');};
+const times=['周末两天都可','周六','周天','其他时间 ✍️'];
+function renderTimes(){
+ buttons('time-options',times,[state.when],text=>{state.when=text;renderTimes();$('time-error').textContent='';});
+ const custom = state.when === times[3];
+ $('custom-time').hidden = !custom;
+ $('day').disabled = $('clock').disabled = !custom;
+ $('day').required = custom;
+ if (!custom) {
+  state.date = state.clock = '';
+  $('day').value = $('clock').value = '';
+ }
+}
+function normalizeMessage(text){return text.replace(/\\r\\n|\\n|\\r/g,'\n').replace(/\r\n?/g,'\n').trim();}
+function localDay(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
+$('day').min=localDay();
+function validateResult(d){if(!d||d.v!==1||!['accepted','declined'].includes(d.status)||!Number.isInteger(d.attempts)||d.attempts<1||d.attempts>6)throw Error('data');for(const key of ['place','address','when','date','clock','message'])if(typeof d[key]!=='string'||d[key].length>300)throw Error('text');if(!Array.isArray(d.activities)||d.activities.length>2||new Set(d.activities).size!==d.activities.length||!d.activities.every(i=>Number.isInteger(i)&&catalog[i])||!d.details||typeof d.details!=='object')throw Error('activities');for(const id of d.activities)if(typeof d.details[id]!=='string'||d.details[id].length>80)throw Error('detail');if(d.status==='accepted'&&(!d.activities.length||!places.includes(d.place)||!times.includes(d.when)))throw Error('incomplete');return d;}
+function summaryBox(label,value,wide=false){const box=document.createElement('div');box.className='panel'+(wide?' span2':'');const l=document.createElement('span');l.className='label';l.textContent=label;const v=document.createElement('div');v.className='value';v.textContent=value;box.append(l,v);$('result-summary').appendChild(box);}
+function showResult(data){resultData=validateResult(data);const ok=data.status==='accepted';$('result-icon').textContent=ok?'🎉':'🌙';$('result-badge').textContent=ok?'约会计划生成成功':'这次先不赴约啦';$('result-title').textContent=ok?'好耶，那就说定啦！':'谢谢你认真邀请我';$('result-desc').textContent=ok?'把喜欢的安排放在一起，等一个开心的见面。':'这是一份认真、温柔的回复。';$('result-summary').replaceChildren();summaryBox('我的回复',ok?'可以呀，我愿意赴约 💌':'这次不能赴约 🌙');summaryBox('邀请次数',`${data.attempts} 次`);if(ok){summaryBox('一起做',data.activities.map(i=>catalog[i].name).join('、'));summaryBox('约在',data.when+(data.date?' · '+data.date:'')+(data.clock?' · '+data.clock:''));summaryBox('具体安排',data.activities.map(i=>`${catalog[i].icon} ${catalog[i].name}：${data.details[i]}`).join('\n'),true);summaryBox('见面地点',data.place+(data.address?' · '+data.address:''),true);}summaryBox(ok?'想对你说':'我的婉拒回复',data.message||(ok?'期待和你见面呀 ♡':'谢谢你的邀请，这次先不赴约啦。'),true);$('result-ending').textContent=ok?'现在万事俱备，只差我们本人出现啦 💌':'谢谢你的心意，也谢谢你的理解 ♡';document.title=ok?'我们的约会计划 💌':'一份认真回复 🌙';const lines = ok ? ['我的回复：可以呀，我愿意赴约 💌','一起做：'+data.activities.map(i=>catalog[i].name).join('、'),'具体安排：',...data.activities.map(i=>'  '+catalog[i].name+'：'+data.details[i]),'见面地点：'+data.place+(data.address?' · '+data.address:''),'约会时间：'+data.when+(data.date?' · '+data.date:'')+(data.clock?' · '+data.clock:''),'想对你说：'+(data.message||'期待和你见面呀 ♡')] : ['我的回复：这次先不赴约啦 🌙',data.message||'谢谢你的邀请，这次先不赴约啦。']; lines.push('认真邀请了 '+data.attempts+' 次'); $('result-text').textContent=lines.join('\n'); go('result');}
+function finish(data){
+ data.message = normalizeMessage(data.message);
+ showResult(data);
+ $('copy-status').textContent = '';
+ $('copy-result').textContent = '复制信息到剪贴板';
+ $('copy-fallback').hidden = true;
+ $('copy-text').value = '';
+ try{localStorage.setItem('little-date-v2',JSON.stringify(data));}catch{}
+}
+$('finish').onclick=()=>{const custom=state.when===times[3];state.date=custom?$('day').value:'';state.clock=custom?$('clock').value:'';state.message=normalizeMessage($('message').value);const err=$('time-error');if(!state.when){err.textContent='请选择一个方便的时间。';return;}if(custom&&!state.date){err.textContent='请选择具体日期。';return;}if(state.date&&state.date<localDay()){err.textContent='请选择今天或以后的日期。';return;}if(state.date&&state.clock&&new Date(`${state.date}T${state.clock}`)<=new Date()){err.textContent='这个时间已经过去啦，请重新选一个。';return;}err.textContent='';state.status='accepted';finish({...state,activities:[...state.activities],details:{...state.details}});};
+$('decline-finish').onclick=()=>{finish({...state,status:'declined',activities:[],details:{},place:'',address:'',when:'',date:'',clock:'',message:normalizeMessage($('decline-message').value)});};
+function copyWithSelection(text){
+ const active = document.activeElement;
+ const field = document.createElement('textarea');
+ field.value = text;
+ field.readOnly = true;
+ field.setAttribute('aria-label','待复制的完整回复');
+ Object.assign(field.style,{position:'fixed',left:'0',top:'0',width:'1px',height:'1px',opacity:'0',fontSize:'16px'});
+ document.body.appendChild(field);
+ try {
+  field.focus({preventScroll:true});
+  field.select();
+  field.setSelectionRange(0,text.length);
+  return document.execCommand('copy');
+ } finally {
+  field.remove();
+  if (active) active.focus({preventScroll:true});
+ }
+}
+$('copy-result').onclick = async () => {
+ const text = $('result-text').textContent;
+ const button = $('copy-result');
+ button.disabled = true;
+ $('copy-status').textContent = '';
+ $('copy-fallback').hidden = true;
+ let copied = false;
+ try {
+  if (navigator.clipboard && window.isSecureContext) {
+   try { await navigator.clipboard.writeText(text); copied = true; } catch {}
+  }
+  if (!copied) copied = copyWithSelection(text);
+ } catch {} finally { button.disabled = false; }
+ if (copied) {
+  button.textContent = '已复制 ✓';
+  $('copy-status').textContent = '已复制到剪贴板，可以粘贴发送给对方。';
+ } else {
+  button.textContent = '重新复制信息';
+  $('copy-status').textContent = '浏览器未允许自动复制，请长按下方文字手动复制。';
+  $('copy-text').value = text;
+  $('copy-fallback').hidden = false;
+  $('copy-text').focus();
+  $('copy-text').select();
+ }
+};
+$('edit').onclick=()=>{state=JSON.parse(JSON.stringify(resultData));refuse=state.attempts-1;renderInvite();renderActivities();renderPlaces();renderTimes();$('address').value=state.address;$('day').value=state.date;$('clock').value=state.clock;$('message').value=state.message;if(state.status==='declined'){$('decline-message').value=state.message;go('decline');}else go('activities');};
+$('restart').onclick=()=>{const url=new URL(location.href);url.search='';url.hash='';location.href=url.href;};
+renderInvite();renderActivities();renderPlaces();renderTimes();
+
+$('direct-decline').onclick=()=>{state.attempts=refuse+1;go('decline');};
+
+function resetDodge(){dodgeX=0;dodgeY=0;$('no').style.left='0px';$('no').style.top='0px';}
+$('no').addEventListener('pointerenter',event=>{
+ if(event.pointerType!=='mouse')return;
+ const button=$('no'),rect=button.getBoundingClientRect(),card=document.querySelector('main').getBoundingClientRect();
+ const originX=rect.left-dodgeX,originY=rect.top-dodgeY;
+ const minX=Math.max(-85,card.left+12-originX),maxX=Math.min(85,card.right-12-originX-rect.width);
+ const minY=Math.max(-60,card.top+12-originY),maxY=Math.min(60,card.bottom-12-originY-rect.height);
+ const choices=Array.from({length:20},()=>({x:minX+Math.random()*Math.max(0,maxX-minX),y:minY+Math.random()*Math.max(0,maxY-minY)}));
+ const p=choices.sort((a,b)=>Math.hypot(b.x-dodgeX,b.y-dodgeY)-Math.hypot(a.x-dodgeX,a.y-dodgeY))[0];
+ // Keep each hop short, while the total offset always remains inside the card.
+ const distance=Math.hypot(p.x-dodgeX,p.y-dodgeY),scale=Math.min(1,90/Math.max(1,distance));
+ dodgeX+=(p.x-dodgeX)*scale;dodgeY+=(p.y-dodgeY)*scale;
+ button.style.left=dodgeX+'px';button.style.top=dodgeY+'px';
+});
+window.addEventListener('resize',resetDodge);
+</script>
+</body></html>
